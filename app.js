@@ -72,6 +72,16 @@ yargs.command({
   },
 });
 
+//Get note file size
+
+yargs.command({
+  command: "getFileSize",
+  describe: "Note file size",
+  handler: () => {
+    notes.getFileSize();
+  },
+});
+
 yargs.parse();
 
 // console.log(yargs.argv);

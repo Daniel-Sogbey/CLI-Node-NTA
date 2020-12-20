@@ -6,12 +6,12 @@ const addNotes = function(title, body) {
   const notes = loadNotes();
   const duplicateNote = notes.find(note => note.title === title);
 
-  console.log(duplicateNote);
+  // console.log(duplicateNote);
 
   if (!duplicateNote) {
     notes.push({ title, body });
     saveNotes(notes);
-    console.log(chalk.green.inverse("Note saved successfully"));
+    console.log(chalk.green.inverse("Note added successfully"));
   } else {
     console.log(chalk.red.inverse("Note title taken"));
   }
@@ -50,6 +50,12 @@ const readNotes = title => {
   }
 };
 
+const getFileSize = () => {
+  const fileSize = fs.statSync("./notes.json");
+
+  console.log(fileSize);
+};
+
 const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
@@ -71,4 +77,5 @@ module.exports = {
   removeNotes,
   listNotes,
   readNotes,
+  getFileSize,
 };
